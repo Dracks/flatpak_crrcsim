@@ -1,0 +1,52 @@
+---
+# Copy from https://github.com/leuc/es.jaumesingla.crrcsim/
+name: Build and Release Flatpak
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+    inputs:
+      prerelease:
+        description: 'Pre-Release'
+        required: true
+        default: false
+        type: boolean
+      version:
+        description: 'Version'
+        required: true
+        type: string
+        default: "v0.0.0"
+jobs:
+  flatpak:
+    name: "Flatpak"
+    runs-on: ubuntu-latest
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:freedesktop-21.08
+      options: --privileged
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Set App Manifest Release Version and Date
+        run: |
+          sed -i "s/VERSION/${{ inputs.version }}/" es.jaumesingla.crrcsim.metainfo.xml
+          sed -i "s/DATE/$(date +%Y-%m-%d)/" es.jaumesingla.crrcsim.metainfo.xml
+      - name: Build Flatpak
+        uses: flatpak/flatpak-github-actions/flatpak-builder@v6.1
+        with:
+          bundle: CRRCSim.${{ inputs.version }}.flatpak
+          manifest-path: es.jaumesingla.crrcsim.yaml
+          cache-key: flatpak-builder-${{ inputs.version }}
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: "CRRCSim ${{ inputs.version }}"
+          tag_name: ${{ inputs.version }}
+          prerelease: ${{ inputs.prerelease }}
+          files: CRRCSim.${{ inputs.version }}.flatpak
+          body: "Flatpak Bundle of https://github.com/Dracks/CRRCSim"
