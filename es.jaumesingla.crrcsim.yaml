@@ -1,8 +1,7 @@
-app-id: com.github.dracks.crrcsim
+app-id: es.jaumesingla.crrcsim
 runtime: org.freedesktop.Platform
 runtime-version: "23.08"
 sdk: org.freedesktop.Sdk
-#rename-desktop-file: CRRCSim.desktop
 command: crrcsim
 finish-args:
   - --socket=wayland
@@ -40,15 +39,24 @@ modules:
         url: http://plib.sourceforge.net/dist/plib-1.8.5.tar.gz
         sha1: c2cf7e3e1e58f7b63dae4bb21e4fa82c3e4d4cfc
 
+  - name: crrcsim-appdata
+    buildsystem: simple
+    build-commands: []
+    sources:
+      - type: file
+        path: es.jaumesingla.crrcsim.png
+      - type: file
+        path: es.jaumesingla.crrcsim.metainfo.xml
+      - type: file
+        path: es.jaumesingla.crrcsim.desktop
+    post-install:
+      - install -D -m 644 -t $FLATPAK_DEST/share/icons/hicolor/32x32/apps/ es.jaumesingla.crrcsim.png
+      - install -D -m 644 -t $FLATPAK_DEST/share/metainfo/ es.jaumesingla.crrcsim.metainfo.xml
+      - desktop-file-install -m 644 --dir=$FLATPAK_DEST/share/applications/ es.jaumesingla.crrcsim.desktop
+
   - name: crrcsim
     builddir: true
     buildsystem: autotools
-    post-install:
-      - "install -Dm644 ../packages/Fedora/CRRCsim.desktop -t /app/share/applications/"
-      - "install -Dm644 ../packages/icons/crrcsim.png -t /app/share/applications/"
-      # - "install -Dm644 icon.png /app/share/icons/hicolor/32x32/apps/torcs.png"
-      # - "install -Dm644 net.sourceforge.torcs.png -t /app/share/icons/hicolor/128x128/apps/"
-      # - "install -Dm644 net.sourceforge.torcs.metainfo.xml -t /app/share/metainfo/"
 
     sources:
       - type: git
