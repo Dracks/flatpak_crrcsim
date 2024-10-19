@@ -44,13 +44,14 @@ modules:
     build-commands: []
     sources:
       - type: file
-        path: es.jaumesingla.crrcsim.png
+        path: es.jaumesingla.crrcsim.svg
       - type: file
         path: es.jaumesingla.crrcsim.metainfo.xml
       - type: file
         path: es.jaumesingla.crrcsim.desktop
     post-install:
-      - install -D -m 644 -t $FLATPAK_DEST/share/icons/hicolor/32x32/apps/ es.jaumesingla.crrcsim.png
+      # - install -D -m 644 -t $FLATPAK_DEST/share/icons/hicolor/32x32/apps/ es.jaumesingla.crrcsim.png
+      - install -D -m 644 -t $FLATPAK_DEST/share/icons/hicolor/scalable/apps/ es.jaumesingla.crrcsim.svg
       - install -D -m 644 -t $FLATPAK_DEST/share/metainfo/ es.jaumesingla.crrcsim.metainfo.xml
       - desktop-file-install -m 644 --dir=$FLATPAK_DEST/share/applications/ es.jaumesingla.crrcsim.desktop
 
