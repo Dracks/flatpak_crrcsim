@@ -9,6 +9,7 @@ finish-args:
   - --share=ipc
   - --socket=pulseaudio
   - --device=dri
+  - --device=input
 cleanup:
   - "/include"
   - "/lib/pkgconfig"
