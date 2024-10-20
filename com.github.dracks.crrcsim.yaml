@@ -1,4 +1,4 @@
-app-id: es.jaumesingla.crrcsim
+app-id: com.github.dracks.crrcsim
 runtime: org.freedesktop.Platform
 runtime-version: "23.08"
 sdk: org.freedesktop.Sdk
@@ -44,16 +44,16 @@ modules:
     build-commands: []
     sources:
       - type: file
-        path: es.jaumesingla.crrcsim.svg
+        path: com.github.dracks.crrcsim.svg
       - type: file
-        path: es.jaumesingla.crrcsim.metainfo.xml
+        path: com.github.dracks.crrcsim.metainfo.xml
       - type: file
-        path: es.jaumesingla.crrcsim.desktop
+        path: com.github.dracks.crrcsim.desktop
     post-install:
-      # - install -D -m 644 -t $FLATPAK_DEST/share/icons/hicolor/32x32/apps/ es.jaumesingla.crrcsim.png
-      - install -D -m 644 -t $FLATPAK_DEST/share/icons/hicolor/scalable/apps/ es.jaumesingla.crrcsim.svg
-      - install -D -m 644 -t $FLATPAK_DEST/share/metainfo/ es.jaumesingla.crrcsim.metainfo.xml
-      - desktop-file-install -m 644 --dir=$FLATPAK_DEST/share/applications/ es.jaumesingla.crrcsim.desktop
+      # - install -D -m 644 -t $FLATPAK_DEST/share/icons/hicolor/32x32/apps/ com.github.dracks.crrcsim.png
+      - install -D -m 644 -t $FLATPAK_DEST/share/icons/hicolor/scalable/apps/ com.github.dracks.crrcsim.svg
+      - install -D -m 644 -t $FLATPAK_DEST/share/metainfo/ com.github.dracks.crrcsim.metainfo.xml
+      - desktop-file-install -m 644 --dir=$FLATPAK_DEST/share/applications/ com.github.dracks.crrcsim.desktop
 
   - name: crrcsim
     builddir: true

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>es.jaumesingla.crrcsim</id>
-  <launchable type="desktop-id">es.jaumesingla.crrcsim.desktop</launchable>
+  <id>com.github.dracks.crrcsim</id>
+  <launchable type="desktop-id">com.github.dracks.crrcsim.desktop</launchable>
   <name>CRRCSim</name>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
@@ -10,4 +10,7 @@
   </description>
 
   <url type="homepage">https://github.com/Dracks/crrcsim/</url>
+  <releases>
+    <release type="development" version="VERSION" date="DATE" />
+  </releases>
 </component>

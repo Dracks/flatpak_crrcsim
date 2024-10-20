@@ -1,5 +1,5 @@
 ---
-# Copy from https://github.com/leuc/es.jaumesingla.crrcsim/
+# Copy from https://github.com/leuc/org.phoboslab.wipeout
 name: Build and Release Flatpak
 
 permissions:
@@ -32,13 +32,13 @@ jobs:
           submodules: recursive
       - name: Set App Manifest Release Version and Date
         run: |
-          sed -i "s/VERSION/${{ inputs.version }}/" es.jaumesingla.crrcsim.metainfo.xml
-          sed -i "s/DATE/$(date +%Y-%m-%d)/" es.jaumesingla.crrcsim.metainfo.xml
+          sed -i "s/VERSION/${{ inputs.version }}/" com.github.dracks.crrcsim.metainfo.xml
+          sed -i "s/DATE/$(date +%Y-%m-%d)/" com.github.dracks.crrcsim.metainfo.xml
       - name: Build Flatpak
         uses: flatpak/flatpak-github-actions/flatpak-builder@v6.1
         with:
           bundle: CRRCSim.${{ inputs.version }}.flatpak
-          manifest-path: es.jaumesingla.crrcsim.yaml
+          manifest-path: com.github.dracks.crrcsim.yaml
           cache-key: flatpak-builder-${{ inputs.version }}
       - name: Create Release
         uses: softprops/action-gh-release@v1

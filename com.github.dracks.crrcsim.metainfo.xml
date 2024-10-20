@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.github.dracks.crrcsim</id>
+  <launchable type="desktop-id">com.github.dracks.crrcsim.desktop</launchable>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  <name>CRRCSim</name>
+  <summary>A Model-Airplane Flight Simulation Program</summary>
+  <description>
+    <p>
+      An RC airplane simulator
+    </p>
+  </description>
+  <categories>
+    <category>Games</category>
+  </categories>
+  <url type="homepage">https://sourceforge.net/projects/crrcsim/</url>
+  <releases>
+    <release type="development" version="VERSION" date="DATE" />
+  </releases>
+</component>
