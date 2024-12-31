@@ -10,6 +10,7 @@ finish-args:
   - --socket=pulseaudio
   - --device=dri
   - --device=input
+  - --persist=.crrcsim
 cleanup:
   - "/include"
   - "/lib/pkgconfig"
